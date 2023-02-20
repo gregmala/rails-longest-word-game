@@ -1,0 +1,11 @@
+<ul>
+  <%@letters.each do |letter|  %>
+  <li style="display: inline-block"><%=letter.capitalize%> </li>
+  <%end%>
+</ul>
+<form action="/score" method="post" data-turbo="false">
+  <input type="text" name= "word" placeholder="What is the longest word you can find?" value = "<%= params[:word] %>">
+  <input type="submit">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters %>
+</form>
